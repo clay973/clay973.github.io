@@ -1,13 +1,19 @@
 <div class="row" id="balanceHeader">
-  <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+   <table WIDTH=100%>
+		<tr><td><h3 align="center">Donations:</h3></td></tr>		
+       <tr><td align="center">VIA VhwWKh1h9kMedzeX3maDWRMuHS4iTvc5T9</td></tr>
+        <tr><td align="center">BTC 14wtBoW1WHDLSaZwJJuJWFCHp1mTtMTFEJ</td></tr>
+        <tr><td align="center">ETH 0x31cf35F20126936C7BE14a15b3655662fa524d2F</td></tr>
+    </table>
+    <br>
+	
+    
+  <!--<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
     <h1 class="page-title txt-color-blueDark">
-      <!--<i class="fa fa-user fa-fw"></i> <span class="localeTitle" data-bind="locale: 'my_account_balances'"></span>-->
-      <i class="fa fa-user fa-fw"></i> <span class="localeTitle" data-bind="locale: 'Your Wallet'"></span>
+      <i class="fa fa-user fa-fw"></i> <span class="localeTitle" data-bind="locale: 'Your Accounts'"></span>
     </h1>
-  </div>
-  
-  <!--
-  <div class="pull-right sectionHeaderButtonBar">
+  </div>-->
+  <!--<div class="pull-right sectionHeaderButtonBar">
     <div class="btn-group">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
           <span data-bind="locale: 'create_new_address'"></span> <i class="fa fa-caret-down"></i>
@@ -43,29 +49,39 @@
     <button id="balanceHelp" type="button" class="btn btn-success">
       <i class="fa fa-question-circle"></i>  <span data-bind="locale: 'page_help'"></span>
     </button>
-  </div> -->
+  </div>-->
 </div>
 
-<!--<div class="alert alert-info" id="alertBuyXcp">
+<!--<div id="oldWalletDetectedNotice" data-bind="fadeVisibleInOnly: WALLET.isOldWallet()" class="alert alert-warning alert-block">
+    <i class="fa-fw fa fa-level-up"></i>
+    <span data-bind="locale: 'old_wallet_detected'"></span>
+    <a href="#" target="_blank" data-bind="locale: 'old_wallet_more_info'"></a>.
+</div>
+
+<div class="alert alert-info" id="alertBuyXcp">
     <i class="fa-fw fa fa-exchange"></i>
     <span data-bind="visible: !QUICK_BUY_ENABLE, locale: 'want_to_buy_xcp'"></span>
     <span data-bind="visible: QUICK_BUY_ENABLE, locale: 'want_to_buy_xcp_with_quick_buy'"></span>
-</div>-->
-
-<div id="gettingStartedNotice" data-bind="fadeVisibleInOnly: WALLET.isNew() && !WALLET.isOldWallet() && window._BALANCES_HAS_LOADED_ALREADY === undefined" class="alert alert-success alert-block">
-    <!--<a class="close" data-dismiss="alert" href="#"></a>-->
-    <h4 class="alert-heading padding-bottom-10"><span data-bind="locale: 'welcome'"></span></h4>
-    <span data-bind="locale: 'welcome_p1'">Get your private key by clicking the blue button below.  Use the Private Key to import your VIA wallet into a Viacoin desktop client.</span>
-    <!--<span data-bind="visible: USE_TESTNET, locale: 'testnet_faucet'"></span>-->
-    <br/><br/>
-    <!--<span data-bind="locale: 'welcome_p2'"></span>-->
 </div>
 
-<!--<div id="pendingBTCPayNotice" data-bind="fadeVisibleInOnly: needWarningOnExit()" class="alert alert-danger alert-block">
+<div id="gettingStartedNotice" data-bind="fadeVisibleInOnly: WALLET.isNew() && !WALLET.isOldWallet() && window._BALANCES_HAS_LOADED_ALREADY === undefined" class="alert alert-success alert-block">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <h4 class="alert-heading padding-bottom-10"><span data-bind="locale: 'welcome'"></span>!</h4>
+    <span data-bind="locale: 'welcome_p1'"></span>
+    <span data-bind="visible: USE_TESTNET, locale: 'testnet_faucet'"></span>
+    <br/><br/>
+    <span data-bind="locale: 'welcome_p2'"></span>
+</div>
+
+<div id="pendingBTCPayNotice" data-bind="fadeVisibleInOnly: needWarningOnExit()" class="alert alert-danger alert-block">
   <i class="fa-fw fa fa-btc"></i>  <span data-bind="locale: 'sell_btc_pending'"></span>
 </div>-->
 
-<!-- Balances container -->
+<table width=100%>
+		<tr><td>Below are all the accounts which are linked to this account (though only a few of them may contain balances). Manually check the balance of the Public Key here <a href="https://chainz.cryptoid.info/via/">https://chainz.cryptoid.info/via/</a></url> then click the blue button to get the Private Key for importing into a PC wallet.</td></tr>		
+</table>
+<br>
+
 <section id="widget-grid" class="balancesContainer" data-bind="foreach: addresses"> <!-- widget grid -->
     <div class="row"> <!-- one row per widget in this case -->
       <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <!-- widget START -->
@@ -74,25 +90,25 @@
             <span class="widget-icon"> <i class="fa" data-bind="css: { 'fa-arrow-circle-o-right': !IS_WATCH_ONLY, 'fa-eye': IS_WATCH_ONLY }"></i> </span>
             <h3 class="jarviswidget-ctrls">
                 <span class="addressLabelText" href="#" data-bind="text: label, click: changeLabel"></span>
-                <!--<div data-bind="visible: assetFilter()" class="label label-warning margin-left-5"><i class="fa fa-filter"></i> <span data-bind="locale: 'filtered'"></span></div>
+				<div data-bind="visible: assetFilter()" class="label label-warning margin-left-5"><i class="fa fa-filter"></i> <span data-bind="locale: 'filtered'"></span></div>
                 <div data-bind="visible: lastSort()" class="label label-info margin-left-5"><i class="fa fa-sort-amount-asc"></i> <span data-bind="locale: 'sorted'"></span></div>
                 <div data-bind="visible: IS_WATCH_ONLY" class="label label-success margin-left-5"><i class="fa fa-eye"></i> <span data-bind="locale: 'watch_only'"></span></div>
-                <div data-bind="visible: IS_ARMORY_OFFLINE" class="label label-success margin-left-5"><i class="fa fa-lock"></i>  <span data-bind="locale: 'armory_offline'"></span></div>-->
+                <div data-bind="visible: IS_ARMORY_OFFLINE" class="label label-success margin-left-5"><i class="fa fa-lock"></i>  <span data-bind="locale: 'armory_offline'"></span></div>
             </h3>
             <div class="widget-toolbar">
               <div class="btn-group btn-group-dropup">
                 <button class="btn dropdown-toggle btn-xs btn-primary" data-toggle="dropdown">
-                  <i class="fa fa-bars"></i> <span data-bind="locale: 'Get Private Key'"></span> <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-bars"></i> <span data-bind="locale: 'Show Private Key'"></span> <i class="fa fa-caret-down"></i>
                 </button>
                 <ul class="dropdown-menu pull-right">
                   <!--<li><a data-bind="click: showQRCode, locale: 'show_qr_code'" href="#"></a></li>-->
-                  <li data-bind="visible: IS_NORMAL"><a data-bind="click: showPrivateKey, locale: 'Get Private Key'" href="#"></a></li>
+                  <li data-bind="visible: IS_NORMAL"><a data-bind="click: showPrivateKey, locale: 'Show Private Key'" href="#"></a></li>
                   <!--<li data-bind="visible: IS_NORMAL"><a data-bind="click: signMessage, locale: 'sign_message'" href="#"></a></li>
                   <li data-bind="visible: IS_NORMAL"><a data-bind="click: signTransaction, locale: 'sign_transaction'" href="#"></a></li>
                   <li data-bind="visible: IS_ARMORY_OFFLINE"><a data-bind="click: armoryBroadcastTransaction, locale: 'broadcast_transaction'" href="#"></a></li>
-                  <li data-bind="visible: !IS_NORMAL"><a data-bind="click: remove, locale: 'remove_address'" href="#"></a></li>
+                  <li data-bind="visible: !IS_NORMAL"><a data-bind="click: remove, locale: 'remove_address'" href="#"></a></li>-->
 
-                  <li class="menu-item dropdown dropdown-submenu">
+                  <!--<li class="menu-item dropdown dropdown-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-bind="locale: 'sort_by'"></a>
                         <ul class="dropdown-menu">
                           <li><a data-bind="click: sortAssetsByName, locale: 'name'" href="#"></a></li>
@@ -121,11 +137,11 @@
             <div class="widget-toolbar display-address"><span id="" data-bind="attr: {'id': 'address-text-' + ADDRESS}, click: selectAddressText, text: ADDRESS"></span></div>
             <div class="clearfix"></div>
           </header>
-          <!--<div>
-            <!--<div class="widget-body" data-bind="attr: {'id': 'address-balances-' + ADDRESS}, foreach: filteredAssets">
-              <div class="asset-item" data-bind="attr: {'id': 'asset-' + ADDRESS + '-' + ASSET}, css: { btc: ASSET === 'VIA', xcp: ASSET === 'XCH', myasset: isMine(), othersasset: !isMine() && (ASSET !== 'VIA' && ASSET !== 'XCH') }">
-                <div class="btn-group btn-group-dropup">
-                  <button type="button" class="btn btn-default dropdown-toggle assetBtn"><span class="caret"></span></button>
+          <!--<div> <!-- widget div-->
+            <!--<div class="widget-body" data-bind="attr: {'id': 'address-balances-' + ADDRESS}, foreach: filteredAssets"> <!-- widget content -->
+              <!--<div class="asset-item" data-bind="attr: {'id': 'asset-' + ADDRESS + '-' + ASSET}, css: { btc: ASSET === 'VIA', xcp: ASSET === 'XCH', myasset: isMine(), othersasset: !isMine() && (ASSET !== 'VIA' && ASSET !== 'XCH') }">
+                <!--<div class="btn-group btn-group-dropup"> <!-- asset level action button -->
+                  <!--<button type="button" class="btn btn-default dropdown-toggle assetBtn"><span class="caret"></span></button>
                   <ul class="dropdown-menu" role="menu">
                     <li><a data-bind="visible: !$parent.IS_WATCH_ONLY, click: send, locale: 'send'" href="#"></a></li>
                     <li><a data-bind="visible: ASSET !== 'VIA' && ASSET !== 'XCH', click: showInfo, locale: 'show_info'" href="#"></a></li>
@@ -136,8 +152,8 @@
                     <li data-bind="visible: !$parent.IS_WATCH_ONLY && isMine()"><a data-bind="click: changeDescription, locale: 'change_token_description'" href="#"></a></li>
                     <li data-bind="visible: !$parent.IS_WATCH_ONLY && isMine() && CALLABLE"><a data-bind="click: call, locale: 'call'" href="#"></a></li>
                   </ul>
-                </div>
-                <h3 class="name pull-left" data-bind="text: ASSET"></h3>
+                </div>-->
+                <!--<h3 class="name pull-left" data-bind="text: ASSET"></h3>
                 <div class="clearfix"></div>
                 <p class="balance" data-bind="style: { 'padding-right': dispBalancePadding }">
                     <span data-bind="visible: isMine(), locale: 'issued', localeArgs: dispTotalIssued"></span>
@@ -155,30 +171,15 @@
                         title="Token is callable"><i class="icon-append fa fa-mail-reply-all"></i></span>
                 </div>
               </div>
-            </div>
-          </div>--> 
-        </div> 
+            </div> <!-- end widget content body -->
+          <!--</div> <!-- end widget div -->
+        </div> <!-- end widget -->
       </article> <!-- WIDGET END -->
     </div> <!-- balances container, foreach: address -->
 </section> <!-- end widget grid -->
-<table width=100%>
-	<caption><h3>This site has been created as a service for those who have VIA stuck in Clearwallet to obtain their private key.</h3></caption>
-</table>
-<table style="margin:auto">
-  <caption><h3>Donations</h3></caption>
-  <tr>
-    <td>VIA VhwWKh1h9kMedzeX3maDWRMuHS4iTvc5T9</td>
-   </tr>
-  <tr>
-    <td>BTC 14wtBoW1WHDLSaZwJJuJWFCHp1mTtMTFEJ</td>
-  </tr>
-  <tr>
-    <td>ETH 0x31cf35F20126936C7BE14a15b3655662fa524d2F</td>
-  </tr>
-</table>
+
 
 <!-- modal for change address label -->
-<!--
 <div data-bind="showModal: shown" id="changeAddressLabelModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="changeAddressLabelModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -206,13 +207,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'change_label'" class="btn btn-primary"></button>
       </div>
-    </div>--><!-- /.modal-content -->
-  <!--</div>--><!-- /.modal-dialog -->
-<!--</div>--><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for new address -->
-<!-- <div data-bind="showModal: shown" id="createNewAddressModal" class="modal fade" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createNewAddressModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="createNewAddressModal" class="modal fade" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createNewAddressModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -253,13 +254,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'create_new_address'" class="btn btn-primary"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for send -->
-<!-- <div data-bind="showModal: shown, validationOptions: { insertMessages: false }" id="sendModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="sendModal" aria-hidden="true">
+<div data-bind="showModal: shown, validationOptions: { insertMessages: false }" id="sendModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="sendModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -297,12 +298,12 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'send'" class="btn btn-primary"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!-- modal for sweep (import) -->
-<!-- <div data-bind="showModal: shown, validationOptions: { insertMessages: false }" id="sweepModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="sweepModal" aria-hidden="true">
+<div data-bind="showModal: shown, validationOptions: { insertMessages: false }" id="sweepModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="sweepModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -384,13 +385,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'sweep'" class="btn btn-danger"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for sign message -->
-<!-- <div data-bind="showModal: shown" id="signMessageModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="signMessageModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="signMessageModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="signMessageModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -440,13 +441,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'close'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'sign'" class="btn btn-primary"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for testnet burning -->
-<!-- <div data-bind="showModal: shown" id="testnetBurnModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="testnetBurnModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="testnetBurnModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="testnetBurnModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -479,9 +480,10 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'burn'" class="btn btn-success"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <!-- modal for display private key -->
 <div data-bind="showModal: shown" id="displayPrivateKeyModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="displayPrivateKeyModal" aria-hidden="true">
@@ -489,11 +491,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" data-bind="click: hide" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" data-bind="locale: 'WIF Private Key for import into PC wallet', localeArgs: address"></h4>
+        <h4 class="modal-title" data-bind="locale: 'Private Key WIF', localeArgs: address"></h4>
       </div>
       <div class="modal-body no-padding">
         <div class="formPadded">
-            <div class="alert alert-warning"><i class="fa-fw fa fa-info"></i><span data-bind="locale: 'Please make sure nobody can look over your shoulder or see your screen.'"></div>
+            <div class="alert alert-warning"><i class="fa-fw fa fa-info"></i><span data-bind="locale: 'Warning: Make sure nobody is looking over your shoulder'"></div>
 
             <center>
                 <a href="#" class="font-lg" data-bind="visible: !privateKeyText(), click: displayPrivateKey, locale: 'Show Private Key'"></a>
@@ -509,13 +511,13 @@
 </div><!-- /.modal -->
 
 <!-- modal for issuing document for notary -->
-<!-- <div data-bind="showModal: shown" id="createDocumentModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createDocumentModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="createDocumentModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createDocumentModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" data-bind="locale: 'notary_create_doc_title'"></h4>
-      </div>
+      </div><!-- end header -->
 
       <div class="modal-body">
         <form class="smart-form" action="" data-bind="submit: doAction">
@@ -561,17 +563,17 @@
           </div>
           </section>
         </form>
-      </div>
+      </div><!-- close modal-body -->
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-bind="click: hide"><span data-bind="locale: 'notary_cancel'"></span></button>
         <button type="button" data-bind="click: submitForm" class="btn btn-primary"><span data-bind="locale: 'notary_create_notary'"></span></button>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <!-- modal for create asset -->
-<!-- <div data-bind="showModal: shown" id="createAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createAssetModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="createAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createAssetModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -660,13 +662,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'create_token'" class="btn btn-primary"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for asset issue additional -->
-<!-- <div data-bind="showModal: shown" id="issueAdditionalAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="issueAdditionalAssetModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="issueAdditionalAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="issueAdditionalAssetModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -691,12 +693,12 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'issue_additional'" class="btn btn-warning"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!-- modal for asset transfer -->
-<!-- <div data-bind="showModal: shown" id="transferAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="transferAssetModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="transferAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="transferAssetModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -721,13 +723,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'transfer'" class="btn btn-danger"></button>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for asset change description -->
-<!-- <div data-bind="showModal: shown" id="changeAssetDescriptionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="changeAssetDescriptionModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="changeAssetDescriptionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="changeAssetDescriptionModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -756,13 +758,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'change_description'" class="btn btn-warning"></button>
       </div>
-    </div> --><!-- /.modal-content -->
-  <!-- </div> --><!-- /.modal-dialog -->
-<!-- </div> --><!-- /.modal -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for pay dividend -->
-<!-- <div data-bind="showModal: shown" id="payDividendModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="payDividendModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="payDividendModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="payDividendModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -822,13 +824,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'pay_distribution'" class="btn btn-warning"></button>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for call asset -->
-<!-- <div data-bind="showModal: shown" id="callAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="callAssetModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="callAssetModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="callAssetModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -854,13 +856,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'call'" class="btn btn-warning"></button>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for show asset info -->
-<!-- <div data-bind="showModal: shown" id="showAssetInfoModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="showAssetInfoModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="showAssetInfoModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="showAssetInfoModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -906,8 +908,8 @@
           <section data-bind="visible: extImageURL"><div class="row">
             <label class="control-label col col-sm-2" data-bind="locale: 'logo'"></label>
             <div class="col col-sm-10">
-                <img data-bind="attr: {'src': extImageURL}" /> --><!-- should be 48x48 -->
-            <!-- </div>
+                <img data-bind="attr: {'src': extImageURL}" /> <!-- should be 48x48 -->
+            </div>
           </div></section>
           <section data-bind="visible: extWebsite"><div class="row">
             <label class="control-label col col-sm-2" data-bind="locale: 'website_url'"></label>
@@ -977,7 +979,7 @@
             </thead>
             <tbody data-bind="foreach: history">
                 <tr>
-                    <td data-bind="text: dispBlockTime()"></td>
+                    <td data-bind="text: dispBlockTime()"></td> <!-- datetime formatted string -->
                     <td data-bind="html: dispDescription()"></td>
                 </tr>
             </tbody>
@@ -986,14 +988,14 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'close'"></button>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 
 <!-- modal for broadcast -->
-<!-- <div data-bind="showModal: shown" id="broadcastModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="broadcastModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="broadcastModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="broadcastModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -1050,13 +1052,13 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'cancel'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'broadcast'" class="btn btn-warning"></button>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for sign transaction -->
-<!-- <div data-bind="showModal: shown" id="signTransactionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="signTransactionModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="signTransactionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="signTransactionModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -1093,13 +1095,13 @@
         <button type="button" data-bind="click: signTransaction, locale: 'sign'" class="btn btn-primary"></button>
         <button type="button" data-bind="click: signAndBroadcastTransaction, locale: 'sign_and_broadcast'" class="btn btn-primary"></button>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- modal for armory broadcast transaction -->
-<!-- <div data-bind="showModal: shown" id="armoryBroadcastTransactionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="armoryBroadcastTransactionModal" aria-hidden="true">
+<div data-bind="showModal: shown" id="armoryBroadcastTransactionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="armoryBroadcastTransactionModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -1125,6 +1127,6 @@
         <button type="button" class="btn btn-default" data-bind="click: hide, locale: 'close'"></button>
         <button type="button" data-bind="click: submitForm, locale: 'broadcast'" class="btn btn-warning"></button>
       </div>
-    </div>
-  </div>
-</div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
